@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./components/Header/Header";
+import List from "./components/ShoesList/List";
 
-function App() {
+const App = () => {
+  const shoes = [
+    {
+      id: Math.random(),
+      name: "sports on run",
+      img: "https://images.unsplash.com/photo-1463100099107-aa0980c362e6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHNob2VzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      desc: "Lorem, ipsum dolor.",
+      price: 29.99,
+    },
+    {
+      id: Math.random(),
+      name: "Fuscinate slow",
+      img: "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHNob2VzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      desc: "Lorem, ipsum dolor.",
+      price: 12.99,
+    },
+    {
+      id: Math.random(),
+      name: "Fuscinate slow",
+      img: "https://images.unsplash.com/photo-1519415943484-9fa1873496d4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8c2hvZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      desc: "Lorem, ipsum dolor.",
+      price: 12.99,
+    },
+  ];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <List shoes={shoes} />
     </div>
   );
-}
+};
 
 export default App;
