@@ -2,7 +2,10 @@ import React, { useContext } from "react";
 import CartContext from "../Store/ShoesContext";
 import styles from "./CartItem.module.css";
 
-const CartItem = ({ cart, showModal, setShowModal }) => {
+const CartItem = ({ cart, showModal, setShowModal, onDelete }) => {
+  const Delete = () => {
+    onDelete(cart.id);
+  };
   return (
     <>
       <div className={styles.item}>
@@ -15,7 +18,10 @@ const CartItem = ({ cart, showModal, setShowModal }) => {
 
           <span className="badge bg-primary"> $ {cart.price}</span>
         </div>
-        Total = ${cart.amount * cart.price}
+        <span className="m-2"> Total = ${cart.amount * cart.price}</span>
+        <button className="btn btn-danger" onClick={Delete}>
+          Remove item
+        </button>
       </div>
     </>
   );

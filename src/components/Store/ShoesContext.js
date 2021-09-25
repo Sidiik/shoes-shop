@@ -15,12 +15,19 @@ export const CartState = ({ children }) => {
   const add = (item) => {
     dispach({ type: "ADD", payload: item });
   };
+  const remove = (id) => {
+    dispach({
+      type: "REMOVE",
+      payload: id,
+    });
+  };
 
   return (
     <CartContext.Provider
       value={{
         carts: state.carts,
         add,
+        remove,
         totalAmount: state.totalAmount,
       }}
     >

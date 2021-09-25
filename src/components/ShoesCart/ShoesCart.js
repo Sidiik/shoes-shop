@@ -6,9 +6,13 @@ import CartContext from "../Store/ShoesContext";
 import CartItem from "./CartItem";
 
 const ShoesCart = () => {
-  const { carts, totalAmount } = useContext(CartContext);
+  const { carts, totalAmount, remove } = useContext(CartContext);
   const [showModal, setShowModal] = useState(false);
-  console.log(totalAmount);
+
+  const onDelete = (id) => {
+    remove(id);
+  };
+
   return (
     <div>
       <button
@@ -25,7 +29,7 @@ const ShoesCart = () => {
         <Modal.Body>
           {carts.length == 0 && "Please add Items to order"}
           {carts.map((cart, idx) => (
-            <CartItem cart={cart} key={idx} />
+            <CartItem cart={cart} key={idx} onDelete={onDelete} />
           ))}
         </Modal.Body>
         <Modal.Footer>
