@@ -1,6 +1,8 @@
 import React from "react";
 import Header from "./components/Header/Header";
+import ShoesCart from "./components/ShoesCart/ShoesCart";
 import List from "./components/ShoesList/List";
+import { CartState } from "./components/Store/ShoesContext";
 
 const App = () => {
   const shoes = [
@@ -27,10 +29,11 @@ const App = () => {
     },
   ];
   return (
-    <div>
+    <CartState>
       <Header />
       <List shoes={shoes} />
-    </div>
+      <ShoesCart />
+    </CartState>
   );
 };
 

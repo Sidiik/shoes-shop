@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import styles from "./List.module.css";
+import CartContext from "../Store/ShoesContext";
 
 const ShoeItem = ({ shoe }) => {
+  const { add, carts } = useContext(CartContext);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newItem = {
+      id: Math.random(),
+      img: shoe.img,
+      name: shoe.name,
+      price: shoe.price,
+      src: shoe.img,
+      amount: 1,
+    };
+    add(newItem);
+  };
   return (
-    <div className={styles.item}>
+    <form className={styles.item} onSubmit={handleSubmit}>
       <div className={styles.img}>
         <img src={shoe.img} alt="" />
       </div>
@@ -18,7 +33,7 @@ const ShoeItem = ({ shoe }) => {
           <button className="btn btn-primary">Add to cart</button>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 

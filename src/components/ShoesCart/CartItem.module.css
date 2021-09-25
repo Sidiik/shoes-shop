@@ -1,0 +1,21 @@
+.item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  border-bottom: 0.3px solid rgb(197, 186, 186);
+  padding-bottom: 1rem;
+}
+
+.item .img {
+  flex-basis: 18%;
+  border: 2px solid cyan;
+  border-radius: 0.3rem;
+}
+.img img {
+  width: 100%;
+}
+.info {
+  flex: 1;
+  margin-left: 1rem;
+}
