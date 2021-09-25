@@ -25,6 +25,19 @@ export const cartReducer = (state, action) => {
         totalAmount: totalAmount,
       };
 
+    case "REMOVE":
+      const deletedId = state.carts.findIndex(
+        (item) => item.id == action.payload
+      );
+      const deletedItemPrice =
+        state.carts[deletedId].price * state.carts[deletedId].amount;
+
+      return {
+        ...state,
+        carts: state.carts.filter((item) => item.id !== action.payload),
+        totalAmount: state.totalAmount - deletedItemPrice,
+      };
+
     default:
       return state;
   }
