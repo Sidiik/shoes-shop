@@ -22,7 +22,7 @@ const App = () => {
     },
     {
       id: Math.random(),
-      name: "Fuscinate slow",
+      name: "Sdueto vast",
       img: "https://images.unsplash.com/photo-1519415943484-9fa1873496d4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8c2hvZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
       desc: "Lorem, ipsum dolor.",
       price: 12.99,

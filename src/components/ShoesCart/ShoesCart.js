@@ -18,7 +18,7 @@ const ShoesCart = () => {
         Show Cart
       </button>
 
-      <Modal show={showModal}>
+      <Modal show={showModal} centered size="lg">
         <Modal.Header>
           <h4>Order now</h4>
         </Modal.Header>
