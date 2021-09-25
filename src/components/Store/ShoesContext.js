@@ -22,6 +22,13 @@ export const CartState = ({ children }) => {
     });
   };
 
+  const increment = (id) => {
+    dispach({
+      type: "INCREMENT",
+      payload: id,
+    });
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -29,6 +36,7 @@ export const CartState = ({ children }) => {
         add,
         remove,
         totalAmount: state.totalAmount,
+        increment,
       }}
     >
       {children}

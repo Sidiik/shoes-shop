@@ -6,11 +6,15 @@ import CartContext from "../Store/ShoesContext";
 import CartItem from "./CartItem";
 
 const ShoesCart = () => {
-  const { carts, totalAmount, remove } = useContext(CartContext);
+  const { carts, totalAmount, remove, increment } = useContext(CartContext);
   const [showModal, setShowModal] = useState(false);
 
   const onDelete = (id) => {
     remove(id);
+  };
+
+  const addMoreItems = (id) => {
+    increment(id);
   };
 
   return (
@@ -29,13 +33,18 @@ const ShoesCart = () => {
         <Modal.Body>
           {carts.length == 0 && "Please add Items to order"}
           {carts.map((cart, idx) => (
-            <CartItem cart={cart} key={idx} onDelete={onDelete} />
+            <CartItem
+              cart={cart}
+              key={idx}
+              onDelete={onDelete}
+              addMore={addMoreItems}
+            />
           ))}
+          <h3 style={{ textAlign: "right" }}>
+            Total : $ {Math.abs(totalAmount.toFixed(2))}
+          </h3>
         </Modal.Body>
         <Modal.Footer>
-          <h5 style={{ marginRight: "auto" }}>
-            Total : ${totalAmount.toFixed(2)}
-          </h5>
           <button
             className="btn btn-danger"
             onClick={() => setShowModal(!showModal)}

@@ -37,7 +37,19 @@ export const cartReducer = (state, action) => {
         carts: state.carts.filter((item) => item.id !== action.payload),
         totalAmount: state.totalAmount - deletedItemPrice,
       };
-
+    case "INCREMENT":
+      const incremntedIdx = state.carts.findIndex(
+        (item) => item.id == action.payload
+      );
+      const incrementedItem = state.carts[incremntedIdx];
+      const newItem = incrementedItem.amount + 1;
+      console.log(newItem);
+      return {
+        ...state,
+        carts: state.carts.map((item) =>
+          item.id === action.payload ? { ...item, amount: +1 } : item
+        ),
+      };
     default:
       return state;
   }
