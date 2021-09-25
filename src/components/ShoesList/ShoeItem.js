@@ -8,7 +8,7 @@ const ShoeItem = ({ shoe }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newItem = {
-      id: Math.random(),
+      id: shoe.id,
       img: shoe.img,
       name: shoe.name,
       price: shoe.price,

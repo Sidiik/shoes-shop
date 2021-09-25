@@ -11,8 +11,11 @@ const CartItem = ({ cart, showModal, setShowModal }) => {
         </div>
         <div className={styles.info}>
           <h4>{cart.name}</h4>
-          <span className="badge bg-primary">${cart.price}</span>
+          <span style={{ marginRight: ".51rem" }}> {cart.amount}&times;</span>
+
+          <span className="badge bg-primary"> $ {cart.price}</span>
         </div>
+        Total = ${cart.amount * cart.price}
       </div>
     </>
   );
