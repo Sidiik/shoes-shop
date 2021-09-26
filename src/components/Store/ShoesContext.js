@@ -29,6 +29,13 @@ export const CartState = ({ children }) => {
     });
   };
 
+  const decrement = (item) => {
+    dispach({
+      type: "DECREMENT",
+      payload: item,
+    });
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -37,6 +44,7 @@ export const CartState = ({ children }) => {
         remove,
         totalAmount: state.totalAmount,
         increment,
+        decrement,
       }}
     >
       {children}

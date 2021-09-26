@@ -2,9 +2,19 @@ import React, { useContext } from "react";
 import CartContext from "../Store/ShoesContext";
 import styles from "./CartItem.module.css";
 
-const CartItem = ({ cart, showModal, setShowModal, onDelete, addMore }) => {
+const CartItem = ({
+  cart,
+  showModal,
+  setShowModal,
+  onDelete,
+  addMore,
+  decrementItem,
+}) => {
   const Delete = () => {
     onDelete(cart);
+  };
+  const decItem = () => {
+    decrementItem(cart);
   };
 
   const incrementItem = () => {
@@ -23,7 +33,7 @@ const CartItem = ({ cart, showModal, setShowModal, onDelete, addMore }) => {
 
         <span className="badge bg-primary"> $ {cart.price}</span>
         <div className="btn-group" role="group" aria-label="Basic example">
-          <button type="button" className="btn btn-warning">
+          <button type="button" className="btn btn-warning" onClick={decItem}>
             -
           </button>
           <span className="btn btn-warning">{cart.amount}</span>

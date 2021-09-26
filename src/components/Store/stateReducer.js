@@ -19,5 +19,17 @@ export const cartReducer = (state, action) => {
           item.id === action.payload.id ? (item.amount += 1) : item
         ),
       };
+
+    case "DECREMENT":
+      return {
+        ...state,
+        carts: state.carts.filter((item) =>
+          item.id === action.payload.id
+            ? item.amount > 1
+              ? (item.amount -= 1)
+              : (item.amount = 0)
+            : item.amount
+        ),
+      };
   }
 };

@@ -6,7 +6,8 @@ import CartContext from "../Store/ShoesContext";
 import CartItem from "./CartItem";
 
 const ShoesCart = () => {
-  const { carts, totalAmount, remove, increment } = useContext(CartContext);
+  const { carts, totalAmount, remove, increment, decrement } =
+    useContext(CartContext);
   const [showModal, setShowModal] = useState(false);
   const [total, setTotal] = useState(0);
 
@@ -22,6 +23,10 @@ const ShoesCart = () => {
 
   const addMoreItems = (item) => {
     increment(item);
+  };
+
+  const decrementItem = (item) => {
+    decrement(item);
   };
 
   return (
@@ -45,6 +50,7 @@ const ShoesCart = () => {
               key={idx}
               onDelete={onDelete}
               addMore={addMoreItems}
+              decrementItem={decrementItem}
             />
           ))}
           <h3 style={{ textAlign: "right" }}>
