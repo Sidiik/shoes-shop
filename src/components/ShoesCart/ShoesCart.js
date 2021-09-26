@@ -11,7 +11,9 @@ const ShoesCart = () => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    setTotal(carts.reduce((prev, curr) => prev + curr.price, 0));
+    setTotal(
+      carts.reduce((prev, curr) => prev + Number(curr.price) * curr.amount, 0)
+    );
   }, [carts]);
 
   const onDelete = (id) => {

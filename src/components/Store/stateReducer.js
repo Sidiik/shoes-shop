@@ -10,5 +10,14 @@ export const cartReducer = (state, action) => {
         ...state,
         carts: state.carts.filter((item) => item.id !== action.payload.id),
       };
+    case "INCREMENT":
+      console.log();
+
+      return {
+        ...state,
+        carts: state.carts.filter((item) =>
+          item.id === action.payload.id ? (item.amount += 1) : item
+        ),
+      };
   }
 };
