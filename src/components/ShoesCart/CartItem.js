@@ -4,12 +4,13 @@ import styles from "./CartItem.module.css";
 
 const CartItem = ({ cart, showModal, setShowModal, onDelete, addMore }) => {
   const Delete = () => {
-    onDelete(cart.id);
+    onDelete(cart);
   };
 
   const incrementItem = () => {
-    addMore(cart.id);
+    addMore(cart);
   };
+  let total = cart.amount * cart.price;
   return (
     <div className={styles.container}>
       <div className={styles.item}>
@@ -34,7 +35,7 @@ const CartItem = ({ cart, showModal, setShowModal, onDelete, addMore }) => {
             +
           </button>
         </div>
-        <span className="m-2"> Total = ${cart.amount * cart.price}</span>
+        <span className="m-2"> Total = ${total.toFixed(2)}</span>
       </div>
       <button className="btn btn-danger " onClick={Delete}>
         Remove item

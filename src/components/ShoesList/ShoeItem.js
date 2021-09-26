@@ -3,7 +3,7 @@ import styles from "./List.module.css";
 import CartContext from "../Store/ShoesContext";
 
 const ShoeItem = ({ shoe }) => {
-  const { add, carts } = useContext(CartContext);
+  const { add, carts, remove } = useContext(CartContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +18,7 @@ const ShoeItem = ({ shoe }) => {
     add(newItem);
   };
   return (
-    <form className={styles.item} onSubmit={handleSubmit}>
+    <div className={styles.item}>
       <div className={styles.img}>
         <img src={shoe.img} alt="" />
       </div>
@@ -30,10 +30,21 @@ const ShoeItem = ({ shoe }) => {
           </span>
         </div>
         <div className="action">
-          <button className="btn btn-primary">Add to cart</button>
+          {carts.some((cart) => cart.id == shoe.id) ? (
+            <span
+              className="border border-primary rounded p-2"
+              style={{ userSelect: "none" }}
+            >
+              In the cart
+            </span>
+          ) : (
+            <button onClick={handleSubmit} className="btn btn-primary">
+              Add to cart
+            </button>
+          )}
         </div>
       </div>
-    </form>
+    </div>
   );
 };
 

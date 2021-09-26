@@ -1,4 +1,4 @@
-import React, { useContext, useReducer, useState } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 
 import { Modal } from "react-bootstrap";
 
@@ -8,13 +8,18 @@ import CartItem from "./CartItem";
 const ShoesCart = () => {
   const { carts, totalAmount, remove, increment } = useContext(CartContext);
   const [showModal, setShowModal] = useState(false);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    setTotal(carts.reduce((prev, curr) => prev + curr.price, 0));
+  }, [carts]);
 
   const onDelete = (id) => {
     remove(id);
   };
 
-  const addMoreItems = (id) => {
-    increment(id);
+  const addMoreItems = (item) => {
+    increment(item);
   };
 
   return (
@@ -41,7 +46,7 @@ const ShoesCart = () => {
             />
           ))}
           <h3 style={{ textAlign: "right" }}>
-            Total : $ {Math.abs(totalAmount.toFixed(2))}
+            Total : $ {Math.abs(total.toFixed(2))}
           </h3>
         </Modal.Body>
         <Modal.Footer>

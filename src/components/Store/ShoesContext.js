@@ -22,10 +22,10 @@ export const CartState = ({ children }) => {
     });
   };
 
-  const increment = (id) => {
+  const increment = (item) => {
     dispach({
       type: "INCREMENT",
-      payload: id,
+      payload: item,
     });
   };
 
